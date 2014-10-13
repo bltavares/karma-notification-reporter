@@ -1,10 +1,11 @@
-# karma-osx-reporter
+# karma-notification-reporter
 
-> Reporter using Mac OS 10.8+ Notification Center to display results.
+> Reporter using Mac OS 10.8+ Notification Center and Ubuntu to display results.
 
 ![image](http://f.cl.ly/items/2T350d1c0H30460U3W2Y/Screen%20Shot%202013-08-06%20at%201.46.47%20PM.png)
 
-Built on top of [node-osx-notifier] and based on [AvnerCohen's code].
+Based on [petrbela's karma-osx-reporter](https://github.com/petrbela/karma-notification-reporter) and [crabhi's karma-ubuntu-reporter](https://github.com/crabhi/karma-ubuntu-reporter)
+This gets both work under the same plugin so you can use either on Mac or Ubuntu.
 
 Only works with **Karma 0.9 or later** which enables custom plugins.
 
@@ -13,20 +14,20 @@ For more information on Karma see the [homepage].
 
 ## Installation
 
-1. Install Karma and karma-osx-reporter plugin.
+1. Install Karma and karma-notification-reporter plugin.
 
   a. Globally. System-wide with `karma` available on command line.
 
     ```sh
     npm install -g karma
-    npm install -g karma-osx-reporter
+    npm install -g karma-notification-reporter
     ```
 
   b. Locally to your project (preferred). Simply run:
 
     ```sh
     npm install karma --save-dev
-    npm install karma-osx-reporter --save-dev
+    npm install karma-notification-reporter --save-dev
     ```
 
     or add the dependencies to `package.json` manually and run `npm install`:
@@ -34,7 +35,7 @@ For more information on Karma see the [homepage].
     ```js
     "devDependencies": {
       "karma": ">=0.9",
-      "karma-osx-reporter": "*"
+      "karma-notification-reporter": "*"
     }
     ```
 
@@ -46,13 +47,13 @@ For more information on Karma see the [homepage].
 2. Add it as a reporter in the config file
 
   ```js
-  reporters: ['progress', 'osx']
+  reporters: ['progress', 'notification']
   ```
 
   or pass through the command line
 
   ```sh
-  $ karma start --reporters=progress,osx karma.conf.js
+  $ karma start --reporters=progress,notification karma.conf.js
   ```
 
 ## Configuration
@@ -102,6 +103,8 @@ config.set({
 MIT License
 
 
+[karma-osx-reporter]: https://github.com/petrbela/karma-osx-notifier
+[karma-ubuntu-reporter]: https://github.com/crabhi/karma-ubuntu-reporter
 [node-osx-notifier]: https://github.com/azoff/node-osx-notifier
 [AvnerCohen's code]: https://github.com/karma-runner/karma/commit/ffd48a7f9aa7bc9a27516393d4d592edc6b628f7
 [homepage]: http://karma-runner.github.io

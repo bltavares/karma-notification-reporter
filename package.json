@@ -1,28 +1,30 @@
 {
-  "name": "karma-osx-reporter",
-  "version": "0.1.0",
-  "description": "A Karma plugin. Report results with OSX Notification Center.",
+  "name": "karma-notification-reporter",
+  "version": "0.0.1",
+  "description": "A Karma plugin. Report results with OSX Notification Center or Libnotify.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/petrbela/karma-osx-reporter.git"
+    "url": "git://github.com/bltavares/karma-notification-reporter.git"
   },
   "bugs": {
-    "url": "http://github.com/petrbela/karma-osx-reporter/issues",
-    "email": "github@petrbela.com"
+    "url": "http://github.com/bltavares/karma-notification-reporter/issues",
+    "email": "contato@bltavares.com"
   },
   "keywords": [
     "karma-plugin",
     "karma-reporter",
     "osx",
+    "ubuntu",
     "notification center"
   ],
-  "author": "Petr Bela <github@petrbela.com>",
-  "dependencies": {
-    "node-osx-notifier": ">= 0.1.0"
+  "author": "Bruno Tavares <contato@bltavares.com>",
+  "optionalDependencies": {
+    "node-osx-notifier": ">= 0.1.0",
+    "dbus-native": "0.1.0"
   },
   "peerDependencies": {
     "karma": ">=0.9"
