@@ -103,8 +103,8 @@ config.set({
 MIT License
 
 
-[karma-osx-reporter]: https://github.com/petrbela/karma-osx-notifier
-[karma-ubuntu-reporter]: https://github.com/crabhi/karma-ubuntu-reporter
-[node-osx-notifier]: https://github.com/azoff/node-osx-notifier
-[AvnerCohen's code]: https://github.com/karma-runner/karma/commit/ffd48a7f9aa7bc9a27516393d4d592edc6b628f7
-[homepage]: http://karma-runner.github.io
+- [karma-osx-reporter](https://github.com/petrbela/karma-osx-notifier)
+- [karma-ubuntu-reporter](https://github.com/crabhi/karma-ubuntu-reporter)
+- [node-osx-notifier](https://github.com/azoff/node-osx-notifier)
+- [AvnerCohen's code](https://github.com/karma-runner/karma/commit/ffd48a7f9aa7bc9a27516393d4d592edc6b628f7)
+- [homepage](http://karma-runner.github.io)
