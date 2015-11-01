@@ -24,7 +24,7 @@
   "author": "Bruno Tavares <contato@bltavares.com>",
   "optionalDependencies": {
     "node-osx-notifier": ">= 0.1.0",
-    "dbus-native": "0.1.0"
+    "dbus-native": ">= 0.2.0"
   },
   "peerDependencies": {
     "karma": ">=0.9"
