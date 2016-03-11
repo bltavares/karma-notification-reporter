@@ -2,6 +2,7 @@ var util = require('util');
 var spawn = require('child_process').spawn;
 var path = require('path');
 var http = require('http');
+var fs = require('fs');
 var root = __dirname;
 
 var config_osx = {
@@ -14,8 +15,17 @@ var OSXReporter = function(helper, logger, config) {
 
   extend(config_osx, config.osxReporter);
 
+  var osxNotifierPath;
+  // are we using an older version of npm that installs dependencies for each module in the module/node_modules dir?
+  if (fs.existsSync(path.join(root, '/node_modules/node-osx-notifier/lib/node-osx-notifier.js'))) {
+    osxNotifierPath = path.join(root, '/node_modules/node-osx-notifier/lib/node-osx-notifier.js');
+  } else {
+    // newer versions of npm install all dependencies in the base node_modules dir
+    osxNotifierPath = path.join(root, '../node-osx-notifier/lib/node-osx-notifier.js');
+  }
+
   // Start local server that will send messages to Notification Center
-  var center = spawn(path.join(root, "/node_modules/node-osx-notifier/lib/node-osx-notifier.js"), [config_osx.port, config_osx.host]);
+  var center = spawn(osxNotifierPath, [config_osx.port, config_osx.host]);
   log.info("OSX Notification Center reporter started at http://%s:%s", config_osx.host, config_osx.port);
   center.on('exit', function(code) {
     log.info('node-osx-notifier exited with code ' + code);
