@@ -126,7 +126,8 @@ var UbuntuReporter = function(helper, logger) {
     if (results.failed) {
       icon = 'dialog-error';
       title = util.format('FAILED - %s', browser.name);
-      message = util.format('%d/%d tests failed in %s.', results.failed, results.total, time);
+      message = util.format('%d/%d tests failed (%s skipped) in %s.',
+                            results.failed, results.total, results.skipped, time);
     }
     else if (results.disconnected || results.error) {
       icon = 'face-crying';
@@ -136,7 +137,8 @@ var UbuntuReporter = function(helper, logger) {
     else {
       icon = 'emblem-default'; // Currently, this is a green tick mark. Didn't find better stock id.
       title = util.format('PASSED - %s', browser.name);
-      message = util.format('%d tests passed in %s.', results.success, time);
+      message = util.format('%d tests passed (%s skipped) in %s.',
+                            results.success, results.skipped, time);
     }
 
     if (notifications) {
