@@ -120,14 +120,19 @@ var UbuntuReporter = function(helper, logger) {
     var icon = null,
     title = null,
     message = null;
+    var skipMessage = '';
 
     log.debug(results);
+
+    if (results.skipped > 0) {
+      skipMessage = ' (' + results.skipped + ' skipped)';
+    }
 
     if (results.failed) {
       icon = 'dialog-error';
       title = util.format('FAILED - %s', browser.name);
-      message = util.format('%d/%d tests failed (%s skipped) in %s.',
-                            results.failed, results.total, results.skipped, time);
+      message = util.format('%d/%d tests failed%s in %s.',
+                            results.failed, results.total, skipMessage, time);
     }
     else if (results.disconnected || results.error) {
       icon = 'face-crying';
@@ -137,8 +142,8 @@ var UbuntuReporter = function(helper, logger) {
     else {
       icon = 'emblem-default'; // Currently, this is a green tick mark. Didn't find better stock id.
       title = util.format('PASSED - %s', browser.name);
-      message = util.format('%d tests passed (%s skipped) in %s.',
-                            results.success, results.skipped, time);
+      message = util.format('%d tests passed%s in %s.',
+                            results.success, skipMessage, time);
     }
 
     if (notifications) {
