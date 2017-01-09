@@ -46,6 +46,11 @@ var OSXReporter = function(helper, logger, config) {
   function report(results, browser) {
     var str_request, title, message;
     var time = helper.formatTimeInterval(results.totalTime);
+    var skipMessage = '';
+
+    if (results.skipped > 0) {
+      skipMessage = ' (' + results.skipped + ' skipped)';
+    }
 
     if (results.disconnected || results.error) {
       str_request = 'fail';
@@ -56,19 +61,21 @@ var OSXReporter = function(helper, logger, config) {
       str_request = 'fail';
       if (browser) {
         title = util.format('FAILED - %s', browser.name);
-        message = util.format('%d/%d tests failed in %s.', results.failed, results.total, time);
+        message = util.format('%d/%d tests failed%s in %s.',
+                              results.failed, results.total, skipMessage, time);
       } else {
         title = util.format('TOTAL FAILED: %s', results.failed);
-        message = util.format('%d/%d tests failed', results.failed, results.success + results.failed);
+        message = util.format('%d/%d tests failed%s.',
+                              results.failed, results.success + results.failed, skipMessage);
       }
     } else {
       str_request = 'pass';
       if (browser) {
         title = util.format('PASSED - %s', browser.name);
-        message = util.format('%d tests passed in %s.', results.success, time);
+        message = util.format('%d tests passed%s in %s.', results.success, skipMessage, time);
       } else {
         title = util.format('TOTAL PASSED: %s', results.success);
-        message = util.format('%d tests passed.', results.success);
+        message = util.format('%d tests passed%s.', results.success, skipMessage);
       }
     }
 
